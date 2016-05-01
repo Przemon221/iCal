@@ -5,28 +5,32 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JScrollBar;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 
+
+
 public class IcalWindow extends JApplet implements ActionListener {
     
 
-    JButton bNew,bGenerate,bLoad,bClear,bOptions,bHideDet,b12H,b24H,bDownload,bShowDet;
-    JLabel lHourF,lTitle,lTimezone;
-    JComboBox cTimezone;
-    JTextArea tTitle;
-    JTable jtBootom;
-    JApplet iCal = this;
+    private JButton bNew,bGenerate,bLoad,bClear,bOptions,bHideDet,b12H,b24H,bDownload,bShowDet;
+    private JLabel lHourF,lTitle,lTimezone;
+    private JComboBox cTimezone;
+    private JTextArea tTitle;
+    private JTable jtBootom;
+    private JApplet iCal = this;
    
     
     boolean val;
-  
+    
+
     
     public void init()
     {   
@@ -34,16 +38,7 @@ public class IcalWindow extends JApplet implements ActionListener {
         iCal.setSize(650,400);
         iCal.getContentPane().setBackground(Color.WHITE);
         iCal.setLayout(null);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+ 
         // Buttons
         bNew = new JButton("New");
         bNew.setBounds(20, 20, 100, 50);       
@@ -80,7 +75,7 @@ public class IcalWindow extends JApplet implements ActionListener {
         b12H.setBackground(Color.LIGHT_GRAY);
         add(b12H);
         b12H.addActionListener(this);
-        b12H.addActionListener(this);
+       
         
         
         b24H = new JButton("24H");
@@ -121,7 +116,7 @@ public class IcalWindow extends JApplet implements ActionListener {
         
         cTimezone = new JComboBox();
         cTimezone.setBounds(380, 122, 250, 20);
-        cTimezone.addItem("Tu beda strefy ");
+        cTimezone.addItem("... ");
         add(cTimezone);
         
         //Table
@@ -140,24 +135,11 @@ public class IcalWindow extends JApplet implements ActionListener {
        
     }
     
+    public void start() {}
+    public void stop() {}
+    public void destry() {}
+   
 
-    public void start()
-    {
-     
-    }
-    
-    public void stop()
-    {
-        
-    }
-    
-    public void destry()
-    {
-        
-    }
-    
-
-    @SuppressWarnings("deprecation")
     @Override
     public void actionPerformed(ActionEvent x)
     {
@@ -166,7 +148,7 @@ public class IcalWindow extends JApplet implements ActionListener {
         
         if (souruce == bNew)
         {
-            
+        
         }
         else if (souruce == bGenerate)
         {
@@ -186,21 +168,21 @@ public class IcalWindow extends JApplet implements ActionListener {
         }
         else if (souruce == bHideDet)
         {   
-            bHideDet.hide();
-            bShowDet.show();
-            lHourF.hide();
-            b12H.hide();
-            b24H.hide();
-      
+            bHideDet.setVisible(false);
+            bShowDet.setVisible(true);
+            lHourF.setVisible(false);
+            b12H.setVisible(false);
+            b24H.setVisible(false);
+     
         }
         else if (souruce == bShowDet)
         {   
-            bShowDet.hide();
-            bHideDet.show();
-            lHourF.show();
-            b12H.show();
-            b24H.show();
-        
+     
+            bHideDet.setVisible(true);
+            bShowDet.setVisible(false);
+            lHourF.setVisible(true);
+            b12H.setVisible(true);
+            b24H.setVisible(true);
         }
         else if(souruce == b12H)
         {
