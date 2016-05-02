@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Time;
 
 import javax.swing.JApplet;
 import javax.swing.JButton;
@@ -15,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 
+import ourMethod.TimeZone;
+
 
 
 public class IcalWindow extends JApplet implements ActionListener {
@@ -22,10 +26,10 @@ public class IcalWindow extends JApplet implements ActionListener {
 
     private JButton bNew,bGenerate,bLoad,bClear,bOptions,bHideDet,b12H,b24H,bDownload,bShowDet;
     private JLabel lHourF,lTitle,lTimezone;
-    private JComboBox cTimezone;
+  
     private JTextArea tTitle;
     private JTable jtBootom;
-    private JApplet iCal = this;
+    private JApplet iCal= this;
    
     
     boolean val;
@@ -42,51 +46,50 @@ public class IcalWindow extends JApplet implements ActionListener {
         // Buttons
         bNew = new JButton("New");
         bNew.setBounds(20, 20, 100, 50);       
-        add(bNew);
+        iCal.add(bNew);
         bNew.addActionListener(this);
         
         bGenerate = new JButton("Generate iCal");
         bGenerate.setBounds(130, 20, 150, 50);
-        add(bGenerate);
+        iCal.add(bGenerate);
         bGenerate.addActionListener(this);
         
         bLoad = new JButton("Load");
         bLoad.setBounds(290, 20, 100, 50);
-        add(bLoad);
+        iCal.add(bLoad);
         bLoad.addActionListener(this);
         
         bClear = new JButton("Clera");
         bClear.setBounds(400, 20, 100, 50);
-        add(bClear);
+        iCal.add(bClear);
         bClear.addActionListener(this);
         
         bOptions = new JButton("Options");
         bOptions.setBounds(510, 20, 100, 50);
-        add(bOptions);
+        iCal.add(bOptions);
         bOptions.addActionListener(this);
         
         bHideDet = new JButton("Hide detail");
         bHideDet.setBounds(20, 80, 100, 20);
-        add(bHideDet);
+        iCal.add(bHideDet);
         bHideDet.addActionListener(this);
         
         b12H = new JButton("12H");
         b12H.setBounds(210, 80, 60, 20);
         b12H.setBackground(Color.LIGHT_GRAY);
-        add(b12H);
+        iCal.add(b12H);
         b12H.addActionListener(this);
-       
-        
+      
         
         b24H = new JButton("24H");
         b24H.setBounds(270, 80, 60, 20);
         b24H.setBackground(Color.LIGHT_GRAY);
-        add(b24H);
+        iCal.add(b24H);
         b24H.addActionListener(this);
         
         bShowDet = new JButton("Show Detail");
         bShowDet.setBounds(20, 80, 100, 20);
-        add(bShowDet);
+        iCal.add(bShowDet);
         bShowDet.addActionListener(this);
         
         
@@ -94,15 +97,15 @@ public class IcalWindow extends JApplet implements ActionListener {
         //label
         lHourF = new JLabel("Hour Format:");
         lHourF.setBounds(130, 80, 100, 20);
-        add(lHourF);
+        iCal.add(lHourF);
         
         lTitle = new JLabel("Title:");
         lTitle.setBounds(20, 120, 100, 20);
-        add(lTitle);
+        iCal.add(lTitle);
         
         lTimezone = new JLabel("Timezone:");
         lTimezone.setBounds(320, 120, 100, 20);
-        add(lTimezone);
+        iCal.add(lTimezone);
         
      
         
@@ -110,14 +113,20 @@ public class IcalWindow extends JApplet implements ActionListener {
         tTitle = new JTextArea("");
         tTitle.setBackground(Color.LIGHT_GRAY);
         tTitle.setBounds(50, 122, 250, 20);
-        add(tTitle);
+        iCal.add(tTitle);
         
         //ComboBox
         
-        cTimezone = new JComboBox();
-        cTimezone.setBounds(380, 122, 250, 20);
-        cTimezone.addItem("... ");
-        add(cTimezone);
+        
+        TimeZone tz = new TimeZone(iCal);
+        try {
+            tz.add_Timezone();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+           
+        
         
         //Table
         String [] columns = {"Date","Date End","Title"} ;
@@ -129,7 +138,7 @@ public class IcalWindow extends JApplet implements ActionListener {
         
         JScrollPane jps = new JScrollPane(jtBootom);
         jps.setBounds(20,170,400,39);
-        add(jps);
+        iCal.add(jps);
         
      
        
@@ -195,7 +204,6 @@ public class IcalWindow extends JApplet implements ActionListener {
             b24H.setBackground(Color.RED);
             b12H.setBackground(Color.LIGHT_GRAY);
         }
-        
         
     }
    
