@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 
 import ourMethod.TimeZone;
+import ourMethod.Clear;
 
 
 
@@ -169,7 +170,8 @@ public class IcalWindow extends JApplet implements ActionListener {
         }
         else if(souruce == bClear)
         {
-            
+            Clear clr = new Clear(tTitle);
+            clr.CleartTitle();
         }
         else if (souruce == bOptions)
         {
