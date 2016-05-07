@@ -25,10 +25,10 @@ import ourMethod.Clear;
 public class IcalWindow extends JApplet implements ActionListener {
     
 
-    private JButton bNew,bGenerate,bLoad,bClear,bOptions,bHideDet,b12H,b24H,bDownload,bShowDet;
+    private JButton bNew,bGenerate,bLoad,bClear,bOptions,bHideoptions,bColor,bIcalFile,bCsvFile,bHideDet,b12H,b24H,bDownload,bShowDet;
     private JLabel lHourF,lTitle,lTimezone;
   
-    private JTextArea tTitle;
+    private JTextArea tTitle,tTitleOptions;
     private JTable jtBootom;
     private JApplet iCal= this;
    
@@ -69,6 +69,30 @@ public class IcalWindow extends JApplet implements ActionListener {
         bOptions.setBounds(510, 20, 100, 50);
         iCal.add(bOptions);
         bOptions.addActionListener(this);
+		
+		bHideoptions = new JButton("Hide");
+        bHideoptions.setBounds(510, 20, 100, 50);
+        iCal.add(bHideoptions);
+        bHideoptions.addActionListener(this);
+        
+        
+        bColor = new JButton("Background color");
+        bColor.setBounds(100, 300, 200, 50);
+        iCal.add(bColor);
+        bColor.addActionListener(this);
+        bColor.setVisible(false);
+        
+        bIcalFile  = new JButton(".iCal");
+        bIcalFile.setBounds(320, 330, 60, 20);
+        iCal.add(bIcalFile);
+        bIcalFile.addActionListener(this);
+        bIcalFile.setVisible(false);
+        
+        bCsvFile = new JButton(".CSV");
+        bCsvFile.setBounds(390, 330, 70, 20);
+        iCal.add(bCsvFile);
+        bCsvFile.addActionListener(this);
+        bCsvFile.setVisible(false);
         
         bHideDet = new JButton("Hide detail");
         bHideDet.setBounds(20, 80, 100, 20);
@@ -107,6 +131,11 @@ public class IcalWindow extends JApplet implements ActionListener {
         lTimezone = new JLabel("Timezone:");
         lTimezone.setBounds(320, 120, 100, 20);
         iCal.add(lTimezone);
+		
+		tTitleOptions = new JTextArea("Choice file extension:");
+        tTitleOptions.setBounds(333, 300, 130, 20);
+        iCal.add(tTitleOptions);
+        tTitleOptions.setVisible(false);
         
      
         
@@ -175,7 +204,44 @@ public class IcalWindow extends JApplet implements ActionListener {
         }
         else if (souruce == bOptions)
         {
-            
+        	bOptions.setVisible(false);
+        	bHideoptions.setVisible(true);
+        	bColor.setVisible(true);
+        	tTitleOptions.setVisible(true);
+        	bIcalFile.setVisible(true);
+        	bCsvFile.setVisible(true);
+        	
+
+        }
+        else if (souruce == bHideoptions)
+        {
+        
+        	bOptions.setVisible(true);
+        	bColor.setVisible(false);
+        	tTitleOptions.setVisible(false);
+        	bIcalFile.setVisible(false);
+        	bCsvFile.setVisible(false);
+        	
+        }
+        
+        
+        else if (souruce == bColor)
+       {
+        	
+                	
+        	
+        
+        	
+       }
+        else if (souruce == bIcalFile) 
+        {
+        	
+        	
+        	
+        }
+        else if (souruce == bCsvFile) 
+        {
+        	
         }
         else if (souruce == bHideDet)
         {   
