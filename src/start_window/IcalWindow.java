@@ -60,7 +60,7 @@ public class IcalWindow extends JApplet implements ActionListener {
         iCal.add(bLoad);
         bLoad.addActionListener(this);
         
-        bClear = new JButton("Clera");
+        bClear = new JButton("Clear");
         bClear.setBounds(400, 20, 100, 50);
         iCal.add(bClear);
         bClear.addActionListener(this);
