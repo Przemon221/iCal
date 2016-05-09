@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 
 import ourMethod.TimeZone;
+import ourMethod.LoadButton;
 import ourMethod.Clear;
 
 
@@ -194,7 +195,11 @@ public class IcalWindow extends JApplet implements ActionListener {
         }
         else if(souruce == bLoad)
         {
-            
+        	try {
+    			LoadButton buttonLoad=new LoadButton(null);
+    		} catch (Exception e) {
+    		e.printStackTrace();
+    		} 
         }
         else if(souruce == bClear)
         {
