@@ -152,7 +152,6 @@ public class IcalWindow extends JApplet implements ActionListener {
         try {
             tz.add_Timezone();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
            
