@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Time;
+import java.util.ArrayList;
 
 import javax.swing.JApplet;
 import javax.swing.JButton;
@@ -19,17 +20,19 @@ import javax.swing.JTextArea;
 
 import ourMethod.TimeZone;
 import ourMethod.LoadButton;
+import ourMethod.New;
 import ourMethod.Clear;
+import ourMethod.GenerateButton;
 
 
 
 public class IcalWindow extends JApplet implements ActionListener {
     
-
+	public ArrayList<New> listOfEvents = new ArrayList<New>();
     private JButton bNew,bGenerate,bLoad,bClear,bOptions,bHideoptions,bColor,bIcalFile,bCsvFile,bHideDet,b12H,b24H,bDownload,bShowDet;
-    private JLabel lHourF,lTitle,lTimezone;
+    private JLabel lHourF,lTitle,lTimezone, lDateStart,lDateEnd,lEvent;
   
-    private JTextArea tTitle,tTitleOptions;
+    private JTextArea tTitle,tTitleOptions, tDateStart, tDateEnd ,tEvent;
     private JTable jtBootom;
     private JApplet iCal= this;
    
@@ -125,10 +128,6 @@ public class IcalWindow extends JApplet implements ActionListener {
         lHourF.setBounds(130, 80, 100, 20);
         iCal.add(lHourF);
         
-        lTitle = new JLabel("Title:");
-        lTitle.setBounds(20, 120, 100, 20);
-        iCal.add(lTitle);
-        
         lTimezone = new JLabel("Timezone:");
         lTimezone.setBounds(320, 120, 100, 20);
         iCal.add(lTimezone);
@@ -138,13 +137,48 @@ public class IcalWindow extends JApplet implements ActionListener {
         iCal.add(tTitleOptions);
         tTitleOptions.setVisible(false);
         
+        lDateStart = new JLabel("Date");
+        lDateStart.setBounds(20,120,400,20);
+        add(lDateStart);
+        
+        lDateEnd = new JLabel("DateEnd");
+        lDateEnd.setBounds(20,170,400,39);
+        add(lDateEnd);
+        
+        lTitle = new JLabel("Title");
+        lTitle.setBounds(380,170,400,39);
+        add(lTitle);
+        
+        lEvent = new JLabel("Events");
+        lEvent.setBounds(20,265,400,39);
+        add(lEvent);
+        
      
         
         //TextArea
+        
+        tDateStart = new JTextArea("");
+        tDateStart.setBackground(Color.LIGHT_GRAY);
+        tDateStart.setBounds(20, 140, 100, 20);
+        add(tDateStart);
+        
+        tDateEnd = new JTextArea("");
+        tDateEnd.setBackground(Color.LIGHT_GRAY);
+        tDateEnd.setBounds(20, 200, 100, 20);
+        add(tDateEnd);
+        
+        tEvent = new JTextArea("");
+        tEvent.setBackground(Color.LIGHT_GRAY);
+        tEvent.setBounds(20, 300, 560, 20);
+        add(tEvent);
+        
         tTitle = new JTextArea("");
         tTitle.setBackground(Color.LIGHT_GRAY);
-        tTitle.setBounds(50, 122, 250, 20);
-        iCal.add(tTitle);
+        tTitle.setBounds(380, 200, 200, 20);
+        add(tTitle);
+        
+        
+        
         
         //ComboBox
         
@@ -158,17 +192,17 @@ public class IcalWindow extends JApplet implements ActionListener {
            
         
         
-        //Table
+       /* //Table
         String [] columns = {"Date","Date End","Title"} ;
         String [][] info = {{" "," "," "}};
         jtBootom = new JTable(info,columns);
         jtBootom.setPreferredScrollableViewportSize(new Dimension(450, 63));
         jtBootom.setFillsViewportHeight(true);
+        */
         
-        
-        JScrollPane jps = new JScrollPane(jtBootom);
+       /* JScrollPane jps = new JScrollPane(jtBootom);
         jps.setBounds(20,170,400,39);
-        iCal.add(jps);
+        iCal.add(jps);*/
         
      
        
@@ -187,10 +221,32 @@ public class IcalWindow extends JApplet implements ActionListener {
         
         if (souruce == bNew)
         {
-        
+        	
+        	
+        	//Data start
+        	String dateStart = tDateStart.getText().toString();
+        	//Data END
+        	String dateEnd = tDateEnd.getText();
+        	//Title
+        	String title = tTitle.getText();
+        	//Description
+        	String description = tEvent.getText();
+        	//adding Event to list
+        	listOfEvents.add(new New(dateStart, dateEnd, title));
+        	tDateStart.setText(null);
+        	tDateEnd.setText(null);
+        	tTitle.setText(null);
+        	tEvent.setText(null);
         }
         else if (souruce == bGenerate)
         {
+        	
+        	GenerateButton BGenerate = new GenerateButton();
+        	try {
+				BGenerate.FGenerateButton(listOfEvents);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
             
         }
         else if(souruce == bLoad)
