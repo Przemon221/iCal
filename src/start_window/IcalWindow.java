@@ -259,7 +259,7 @@ public class IcalWindow extends JApplet implements ActionListener {
         }
         else if(souruce == bClear)
         {
-            Clear clr = new Clear(tTitle);
+            Clear clr = new Clear(tTitle, tEvent, tDateStart, tDateEnd);
             clr.CleartTitle();
         }
         else if (souruce == bOptions)
