@@ -1,0 +1,18 @@
+package ourMethod;
+
+public class TextArea {
+	
+	String text;
+	int rowsl
+	int columns;
+	int scrollbars;
+	
+	
+	public TextArea(String Rtext,int Rrows,int Rcolumns,int Rscrollbars){
+		this.text = Rtext;
+		this.rows = Rrows; 
+		this.columns = Rcolumns;
+		this.scrollbars = Rscrollbars;
+	}
+	
+}

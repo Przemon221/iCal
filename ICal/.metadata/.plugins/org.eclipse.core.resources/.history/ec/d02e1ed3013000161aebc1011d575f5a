@@ -1,0 +1,92 @@
+package ourMethod;
+
+import java.awt.Color;
+import start_window.IcalWindow;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+import javax.swing.JApplet;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+
+public class Options extends IcalWindow implements ActionListener {
+	
+	int extension_ical;
+	int extension_csv;
+	
+	public void start(int hide) {
+		
+			
+		
+
+		  //if(hide<=1)
+		  //{
+			  /*getiCal().setSize(650,400);
+			  getiCal().getContentPane().setBackground(Color.WHITE); 
+			  getiCal().setLayout(null);*/
+			  
+	            //JFrame frame1 = new JFrame("Background Color");
+	            
+	           // frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	     
+	           /* final JButton bGreen = new JButton("GREEN");
+	            //Add action listener to button
+	            bGreen.addActionListener(new ActionListener() {
+	                public void actionPerformed(ActionEvent e)
+	                {
+	                	Object souruce = e.getSource();
+	                	*/
+
+	                   /* if (souruce == bGreen)
+	                    {
+	                    	getiCal().getContentPane().setBackground(Color.GREEN);
+	                    }*/
+	                	
+	               // }
+	            //}
+	          // );    
+		    
+	           // frame1.getContentPane().add(bGreen);
+	           // frame1.pack();
+	            //frame1.setVisible(true);
+	}
+
+	public int extension_ical(){
+
+		extension_ical = 1;
+		extension_csv = 0;
+		
+		return extension_ical;
+	}
+	
+	
+
+	public int extension_csv(){
+
+		extension_csv = 1;
+		extension_ical = 0;
+		
+		return extension_csv;
+	}
+	
+	public int getExtCsv(){
+		return extension_csv;
+	}
+	public int getExtIcal(){
+		return extension_ical;
+	}
+
+
+	public void setExtension_ical(int extension_ical) {
+		this.extension_ical = extension_ical;
+	}
+
+
+	public void setExtension_csv(int extension_csv) {
+		this.extension_csv = extension_csv;
+	}
+
+}

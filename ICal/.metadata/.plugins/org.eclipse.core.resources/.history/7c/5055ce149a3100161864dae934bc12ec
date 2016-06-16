@@ -1,0 +1,9 @@
+package ourMethod;
+
+public class TextArea {
+
+	public TextArea(String text,int rows,int columns,int scrollbars){
+		
+	}
+	
+}

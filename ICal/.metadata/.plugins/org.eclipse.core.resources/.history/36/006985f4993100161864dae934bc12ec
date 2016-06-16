@@ -1,0 +1,10 @@
+package ourMethod;
+
+public class TextArea {
+
+	public abstract TextArea(String text,
+		    int rows,
+		    int columns,
+		    int scrollbars);
+	
+}
