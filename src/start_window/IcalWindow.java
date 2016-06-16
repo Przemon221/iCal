@@ -236,11 +236,15 @@ public class IcalWindow extends JApplet implements ActionListener {
 			}
 
 		} else if (souruce == bLoad) {
-			try {
-				LoadButton buttonLoad = new LoadButton(null);
+			LoadButton loadButton = new LoadButton();
+			try {				
+				loadButton.chooseFile();
+								
 			} catch (Exception e) {
 				e.printStackTrace();
+				
 			}
+			taEvents.setText(loadButton.sb.toString());
 		} else if (souruce == bClear) {
 			Clear clr = new Clear(tTitle, taEvents);
 			clr.CleartTitle();
