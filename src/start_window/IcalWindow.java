@@ -38,7 +38,7 @@ public class IcalWindow extends JApplet implements ActionListener {
 	private JButton bNew, bGenerate, bLoad, bClear, bOptions, bHideoptions, bColor, bIcalFile, bCsvFile, bHideDet, b12H,
 			b24H, bDownload, bShowDet;
 	private JLabel lHourF, lTitle, lTimezone, lDateStart, lDateEnd, lEvent;
-	private JTextArea tTitle, tTitleOptions, tDateStart, tDateEnd,taEventsBorder;
+	private JTextArea tTitle, tTitleOptions, tDateStart, tDateEnd, taEventsBorder;
 	private TextArea taEvents = new TextArea("", 0, 0, TextArea.SCROLLBARS_BOTH);
 	private JApplet iCal = this;
 	String fileExtension;
@@ -153,7 +153,7 @@ public class IcalWindow extends JApplet implements ActionListener {
 		add(lEvent);
 
 		// JTextArea
-		
+
 		tDateStart = new JTextArea("rrrrMMdd");
 		tDateStart.setBackground(Color.LIGHT_GRAY);
 		tDateStart.setBounds(20, 140, 100, 20);
@@ -168,14 +168,14 @@ public class IcalWindow extends JApplet implements ActionListener {
 		tTitle.setBackground(Color.LIGHT_GRAY);
 		tTitle.setBounds(380, 200, 200, 20);
 		add(tTitle);
-		
-		//TextArea
+
+		// TextArea
 		taEvents.setEditable(false);
 		taEvents.setBackground(Color.LIGHT_GRAY);
 		taEvents.setBounds(20, 300, 560, 300);
 		taEvents.setFont(new Font("Verdana", Font.BOLD, 15));
 		add(taEvents);
-		
+
 		taEventsBorder = new JTextArea("");
 		taEventsBorder.setBackground(Color.GRAY);
 		taEventsBorder.setBounds(18, 298, 564, 304);
@@ -190,7 +190,6 @@ public class IcalWindow extends JApplet implements ActionListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 
 	}
 
@@ -237,12 +236,12 @@ public class IcalWindow extends JApplet implements ActionListener {
 
 		} else if (souruce == bLoad) {
 			LoadButton loadButton = new LoadButton();
-			try {				
+			try {
 				loadButton.chooseFile();
-								
+
 			} catch (Exception e) {
 				e.printStackTrace();
-				
+
 			}
 			taEvents.setText(loadButton.sb.toString());
 		} else if (souruce == bClear) {
@@ -256,6 +255,12 @@ public class IcalWindow extends JApplet implements ActionListener {
 			tTitleOptions.setVisible(true);
 			bIcalFile.setVisible(true);
 			bCsvFile.setVisible(true);
+
+		} else if (souruce == bColor) {
+
+			Options options = new Options();
+			options.setParent(this);
+			options.start(1);
 
 		}
 

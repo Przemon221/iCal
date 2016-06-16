@@ -1,82 +1,67 @@
 package ourMethod;
 
 import java.awt.Color;
-import start_window.IcalWindow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.BorderLayout;
 
 import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
+import start_window.IcalWindow;
 
 public class Options extends IcalWindow implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	JApplet iCal = this;
+	Color bgColor = Color.WHITE;
 	
-	int extension_ical;
-	int extension_csv;
-	
-	JButton bIcalFile,bCsvFile; 
-	JTextArea tTitleOptions;
-	
-	public Options (JButton RefbIcalFile, JButton RefbCsvFile){
-		this.bIcalFile = RefbIcalFile;
-		this.bCsvFile = RefbCsvFile;
+	public void setParent(JApplet parent){
+		iCal = parent;
 	}
-	
-	public void actionPerformed(ActionEvent e){
-		Object object = e.getSource();
+	public void start(int hide) {
+
 		
-		 if (object == bIcalFile){
-			 setExtension_ical(1);
-			 setExtension_csv(0);
-			 System.out.println("Ustawiam Ical");
-	     }
-		 
-		 else if (object == bCsvFile){
-			 setExtension_ical(0);
-			 setExtension_csv(1);
-			 System.out.println("Ustawiam Csv");
-		 }
+		if (hide == 1) {
+			iCal.setSize(650, 400);
 		
-    }
-	
+			iCal.setLayout(new BorderLayout());
 
+			
+			JFrame frame1 = new JFrame("Background Color");
+			
+			// frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	public int extension_ical(){
-
-		extension_ical = 1;
-		extension_csv = 0;
-		
-		return extension_ical;
+			final JButton bGreen = new JButton("GREEN");
+			// Add action listener to button
+			bGreen.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Object souruce = e.getSource();
+					
+					if (souruce == bGreen) {
+						
+						if(bgColor == Color.WHITE){
+							bgColor = Color.GREEN;
+							bGreen.setText("RED");
+						} else if(bgColor == Color.GREEN){
+							bgColor = Color.RED;
+							bGreen.setText("WHITE");
+						}else if(bgColor == Color.RED){
+							bgColor = Color.WHITE;
+							bGreen.setText("GREEN");
+						}
+						
+						iCal.getContentPane().setBackground(bgColor);
+					}
+				}
+			});
+			
+			frame1.getContentPane().add(bGreen);
+			frame1.pack();
+			frame1.setVisible(true);
+		}
 	}
-	
-	
-
-	public int extension_csv(){
-
-		extension_csv = 1;
-		extension_ical = 0;
-		
-		return extension_csv;
-	}
-	
-	public int getExtCsv(){
-		return extension_csv;
-	}
-	public int getExtIcal(){
-		return extension_ical;
-	}
 
 
-	public void setExtension_ical(int extension_ical) {
-		this.extension_ical = extension_ical;
-	}
-
-
-	public void setExtension_csv(int extension_csv) {
-		this.extension_csv = extension_csv;
-	}
 
 }
