@@ -1,25 +1,23 @@
 package ourMethod;
 
-import javax.swing.JTextArea;
+import java.awt.TextArea;
 
+import javax.swing.JTextArea;
 
 public class Clear {
 	private JTextArea tTitle_handle;
-	private JTextArea tEvent_handle;
-	private JTextArea tDateStart_handle;
-	private JTextArea tDateEnd_handle;
-	public Clear(JTextArea tTitle,JTextArea tEvent,JTextArea tDateStart,JTextArea tDateEnd){
-	tTitle_handle = tTitle;
-	tEvent_handle = tEvent;
-	tDateStart_handle = tDateStart;
-	tDateEnd_handle = tDateEnd;
-	}
-	
+	TextArea events_handle;
 
-public  void CleartTitle() {
-	tTitle_handle.setText(" ");
-	tEvent_handle.setText(" ");
-	tDateStart_handle.setText(" ");
-	tDateEnd_handle.setText(" ");
-}
+	public Clear(JTextArea tTitle, TextArea tEvents) {
+		tTitle_handle = tTitle;
+		events_handle = tEvents;
+		
+	}
+	public void ClearEvents () {
+		events_handle.setText("");
+	}
+
+	public void CleartTitle() {
+		tTitle_handle.setText(" ");
+	}
 }
