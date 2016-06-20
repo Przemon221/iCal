@@ -5,18 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 import javax.swing.JApplet;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import start_window.IcalWindow;
-import java.io.IOException;
 
 public class GenerateButton extends JApplet implements ActionListener {
 

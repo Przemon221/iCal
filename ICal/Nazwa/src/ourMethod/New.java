@@ -5,7 +5,6 @@ public class New {
 	public String title;
 	public String dateStart;
 	public String dateEnd;
-	public String description;
 
 	public New(String dateStart, String dateEnd, String title) {
 		this.dateStart = dateStart;

@@ -1,17 +1,14 @@
 package ourMethod;
 
-import java.awt.TextArea;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import start_window.IcalWindow;
 
+@SuppressWarnings("serial")
 public class LoadButton extends JFrame {
 
 	JTextArea textArea = new JTextArea();
